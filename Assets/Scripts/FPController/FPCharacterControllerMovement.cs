@@ -32,6 +32,7 @@ public class FPCharacterControllerMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        //Debug.Log(GetComponent<CharacterController>().velocity);
         float tmp_CurrentSpeed = walkSpeed;
         var grd = characterController.isGrounded;
         if (grd)

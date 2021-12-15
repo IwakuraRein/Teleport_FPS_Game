@@ -16,6 +16,10 @@ TagManager:
   - Water
   - Wood
   - FX
+  - Target
+  - ExplosiveBarrel
+  - Portal
+  - PortalableSurface
   layers:
   - Default
   - TransparentFX
@@ -25,10 +29,10 @@ TagManager:
   - UI
   - Player
   - Gun
-  - 
-  - 
-  - 
-  - 
+  - PortalSurface
+  - PreviewPortal
+  - Portal
+  - PlayerBody
   - 
   - 
   - 

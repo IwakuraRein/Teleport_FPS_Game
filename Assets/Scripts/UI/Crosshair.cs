@@ -22,7 +22,7 @@ public class Crosshair : MonoBehaviour
 
         inPortalImg.color = new Vector4(portals[0].PortalColour.r, portals[0].PortalColour.g, portals[0].PortalColour.b, alpha);
         outPortalImg.color = new Vector4(portals[1].PortalColour.r, portals[1].PortalColour.g, portals[1].PortalColour.b, alpha);
-        Debug.Log(outPortalImg.color);
+
         inPortalImg.gameObject.SetActive(false);
         outPortalImg.gameObject.SetActive(false);
     }

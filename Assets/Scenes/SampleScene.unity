@@ -718,7 +718,6 @@ GameObject:
   - component: {fileID: 515331518}
   - component: {fileID: 515331521}
   - component: {fileID: 515331520}
-  - component: {fileID: 515331519}
   m_Layer: 11
   m_Name: Capsule
   m_TagString: Untagged
@@ -740,20 +739,6 @@ Transform:
   m_Father: {fileID: 6313736854337915107}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &515331519
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 515331517}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &515331520
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19273,6 +19258,8 @@ GameObject:
   - component: {fileID: 6313754959571795761}
   - component: {fileID: 6330654673124102709}
   - component: {fileID: 6311319392956490968}
+  - component: {fileID: 6311319392956490969}
+  - component: {fileID: 6311319392956490970}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -19312,6 +19299,38 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &6311319392956490969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6311319392956490967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c17d1f546c0282e4daab183f55891995, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portals:
+  - {fileID: 220428758}
+  - {fileID: 715938177}
+  portalCameraObject: {fileID: 1568774049}
+  iterations: 7
+  insidePortal: 0
+  inPortal: {fileID: 0}
+--- !u!135 &6311319392956490970
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6311319392956490967}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.02
+  m_Center: {x: 0, y: 0, z: 0.01}
 --- !u!1 &6311324306561872801
 GameObject:
   m_ObjectHideFlags: 0
@@ -19623,8 +19642,6 @@ GameObject:
   - component: {fileID: 6247359261058634221}
   - component: {fileID: 6180014099902860613}
   - component: {fileID: 6311745107369932816}
-  - component: {fileID: 6311745107369932818}
-  - component: {fileID: 6311745107369932817}
   m_Layer: 0
   m_Name: Gun Camera
   m_TagString: Untagged
@@ -19664,38 +19681,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!135 &6311745107369932817
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6311745107369932815}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.03
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6311745107369932818
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6311745107369932815}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c17d1f546c0282e4daab183f55891995, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  portals:
-  - {fileID: 220428758}
-  - {fileID: 715938177}
-  portalCameraObject: {fileID: 1568774049}
-  iterations: 7
-  insidePortal: 0
-  inPortal: {fileID: 0}
 --- !u!1 &6311750404519968479
 GameObject:
   m_ObjectHideFlags: 0
@@ -20282,7 +20267,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 2039
+    m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

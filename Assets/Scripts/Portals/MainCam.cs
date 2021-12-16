@@ -118,6 +118,7 @@ public class MainCam : MonoBehaviour
     // 玩家摄像机进入传送门后需要调整。
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("camera hits something");
         inPortal = other.GetComponent<Portal>();
         if (inPortal != null)
         {

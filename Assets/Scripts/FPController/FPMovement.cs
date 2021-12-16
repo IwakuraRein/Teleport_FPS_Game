@@ -72,3 +72,4 @@ public class FPMovement : MonoBehaviour
         isOnPlane = false;
     }
 }
+

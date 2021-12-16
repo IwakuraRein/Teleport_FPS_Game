@@ -25,6 +25,7 @@ public class PlayerController : PortalableObject
         // cameraMove = GetComponent<CameraMove>();
         TargetRotation = MainCam.transform.rotation;
         MainCam = GameObject.FindGameObjectWithTag("MainCamera");
+        Physics.IgnoreCollision(GetComponent<CharacterController>(), MainCam.GetComponent<Collider>());
         camLocalPos = MainCam.transform.localScale;
         camLocalRot = MainCam.transform.localRotation;
     }

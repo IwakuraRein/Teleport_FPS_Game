@@ -37,6 +37,7 @@ public class PortalPlacement : MonoBehaviour
         //cameraMove = GetComponent<CameraMove>();
         //playerController = GetComponent<PlayerController>();
         MainCam = GameObject.FindGameObjectWithTag("MainCamera");
+        
         AbleToPlace=false;
     }
 
@@ -238,6 +239,8 @@ public class PortalPlacement : MonoBehaviour
     // Ensure the portal cannot intersect a section of wall.
     private void FixIntersects()
     {
+        float scale_1 = transform.localScale.x;
+        float scale_2 = transform.localScale.y;
         var testDirs = new List<Vector3>
         {
              Vector3.right,
@@ -246,7 +249,7 @@ public class PortalPlacement : MonoBehaviour
             -Vector3.up
         };
 
-        var testDists = new List<float> { 1.1f, 1.1f, 2.1f, 2.1f };
+        var testDists = new List<float> { scale_1+0.1f, scale_1+0.1f, scale_1*2+0.1f, scale_1*2+0.1f };
 
         for (int i = 0; i < 4; ++i)
         {

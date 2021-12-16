@@ -61,13 +61,14 @@ public class Portal : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         var obj = other.GetComponent<PortalableObject>();
-        var obj2 = other.GetComponent<CharacterController>();
-        if (obj2 != null){
-            Debug.Log("player enters portal.");
-            portalObjects.Add(player.GetComponentInChildren<PortalableObject>());
-            player.GetComponentInChildren<PortalableObject>().SetIsInPortal(this, OtherPortal, wallCollider);
-        }
-        else if (obj != null)
+        // var obj2 = other.GetComponent<CharacterController>();
+        // if (obj2 != null){
+        //     Debug.Log("player enters portal.");
+        //     portalObjects.Add(player.GetComponentInChildren<PortalableObject>());
+        //     player.GetComponentInChildren<PortalableObject>().SetIsInPortal(this, OtherPortal, wallCollider);
+        // }
+        // else if (obj != null)
+        if (obj != null)
         {
             Debug.Log("something enters portal.");
             portalObjects.Add(obj);
@@ -78,16 +79,16 @@ public class Portal : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         var obj = other.GetComponent<PortalableObject>();
-        var obj2 = other.GetComponent<CharacterController>();
-        if (obj2 != null){
-            obj = player.GetComponentInChildren<PortalableObject>();
-            if(portalObjects.Contains(obj)) {
-                Debug.Log("player exits portal.");
-                portalObjects.Remove(obj);
-                obj.ExitPortal(wallCollider);
-                //obj.Warp();
-            }
-        }
+        // var obj2 = other.GetComponent<CharacterController>();
+        // if (obj2 != null){
+        //     obj = player.GetComponentInChildren<PortalableObject>();
+        //     if(portalObjects.Contains(obj)) {
+        //         Debug.Log("player exits portal.");
+        //         portalObjects.Remove(obj);
+        //         obj.ExitPortal(wallCollider);
+        //         //obj.Warp();
+        //     }
+        // }
         if(portalObjects.Contains(obj))
         {
             Debug.Log("something exit portal.");

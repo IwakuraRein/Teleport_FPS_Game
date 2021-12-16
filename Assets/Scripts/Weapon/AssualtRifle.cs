@@ -52,6 +52,10 @@ namespace Scripts.Weapon
 
         protected override void Shooting()
         {
+            if (isReloading)
+            {
+                return;
+            }
             if (currentAmmo <= 0)
             {
                 return;
@@ -107,10 +111,15 @@ namespace Scripts.Weapon
             tmp_BulletScript.impactPrefab = bulletImpactPrefab;
             tmp_BulletScript.impactAudioData = impactAudioData;
             tmp_BulletScript.bulletSpeed = 100;
+            if (tmp_Bullet != null)
+            {
+                Destroy(tmp_Bullet, 5);
+            }
         }
 
         private IEnumerator CheckReloadAmmoAnimationEnd()
         {
+            isReloading = true;
             while (true)
             {
                 yield return null;
@@ -132,6 +141,7 @@ namespace Scripts.Weapon
 
                         currentMaxAmmoCarried = tmp_RemainingAmmo <= 0 ? 0 : tmp_RemainingAmmo;
 
+                        isReloading = false;
                         yield break;
                     }
                 }

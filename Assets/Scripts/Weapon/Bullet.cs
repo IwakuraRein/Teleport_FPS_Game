@@ -6,7 +6,7 @@ namespace Scripts.Weapon
 {
     public class Bullet : MonoBehaviour
     {
-        public float bulletSpeed;
+        public float bulletSpeed; 
         public GameObject impactPrefab;
         public ImpactAudioData impactAudioData;
 

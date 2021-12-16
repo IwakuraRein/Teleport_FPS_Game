@@ -15,13 +15,13 @@ namespace Scripts.Weapon
         
         public GameObject bulletImpactPrefab;
         public bool isFiring { get; private set; }
-        public LayerMask portalLayer;
-        public LayerMask defaultRaycastLayer;
+        // public LayerMask portalLayer;
+        // public LayerMask defaultRaycastLayer;
 
         protected override void Start()
         {
-            Debug.Log(portalLayer.value);
-            Debug.Log(defaultRaycastLayer.value);
+            // Debug.Log(portalLayer.value);
+            // Debug.Log(defaultRaycastLayer.value);
             base.Start();
             reloadAmmoCheckCoroutine = CheckReloadAmmoAnimationEnd();
             doAimCoroutine = DoAim();

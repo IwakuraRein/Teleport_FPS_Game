@@ -49,7 +49,7 @@ namespace Scripts.Weapon
 
             Destroy(gameObject);
         }
-        private bool Shoot(Vector3 dir, bool ignorePortal = false)
+        private bool Shoot(Vector3 dir)
         {
             // LayerMask mask = 1 << 你需要开启的Layers层。
             // LayerMask mask = 0 << 你需要关闭的Layers层。
@@ -57,7 +57,7 @@ namespace Scripts.Weapon
                 dir,
                 out RaycastHit tmp_Hit,
                 (transform.position - prevPosition).magnitude)) return false;
-            else if (tmp_Hit.collider.tag == "Portal" && !ignorePortal)
+            else if (tmp_Hit.collider.tag == "Portal")
             {
                 var inPortal = tmp_Hit.collider.GetComponent<Portal>();
                 if (inPortal == null) return false;
@@ -96,7 +96,7 @@ namespace Scripts.Weapon
                 // relativeDir = Quaternion.Euler(0.0f, 180.0f, 0.0f) * relativeDir;
                 // dir = outPortal.transform.TransformDirection(relativeDir);
 
-                return Shoot(dir, true);
+                return Shoot(dir);
             }
             else
             {

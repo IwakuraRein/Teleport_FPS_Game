@@ -13,7 +13,6 @@ namespace Scripts.Weapon
         private Vector3 prevPosition;
         private RaycastHit thisHit;
         private Vector3 tmpPos1, tmpPos2,tmptmphit, newPrevPos;
-        private bool firstLaunch=true;
 
         private void Start()
         {
@@ -59,6 +58,8 @@ namespace Scripts.Weapon
                 (transform.position - prevPosition).magnitude)) return false;
             else if (tmp_Hit.collider.tag == "Portal")
             {
+                GetComponent<TrailRenderer>().enabled=false;
+                Invoke("OpenUpTrailRender", 0.1f);
                 var inPortal = tmp_Hit.collider.GetComponent<Portal>();
                 if (inPortal == null) return false;
                 var outPortal = inPortal.OtherPortal;
@@ -123,6 +124,9 @@ namespace Scripts.Weapon
             // Gizmos.DrawLine(tmpPos2, tmpPos1);
             // Gizmos.color = Color.green;
             // Gizmos.DrawLine(newPrevPos, transform.position);
+        }
+        private void OpenUpTrailRender(){
+            GetComponent<TrailRenderer>().enabled=true;
         }
     }
 }

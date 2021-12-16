@@ -68,7 +68,7 @@ public class FPCharacterControllerMovement : MonoBehaviour
         }
 
         movementDirection.y -= gravity * Time.deltaTime;
-        characterController.Move(Time.deltaTime * tmp_CurrentSpeed * movementDirection);
+        characterController.Move(tmp_CurrentSpeed * movementDirection * Time.deltaTime);
     }
 
     private IEnumerator DoCrouch(float _target)

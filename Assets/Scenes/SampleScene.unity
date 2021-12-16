@@ -1300,6 +1300,10 @@ PrefabInstance:
       value: PortalInticater
       objectReference: {fileID: 0}
     - target: {fileID: 2164432502208030148, guid: edde723163b681847a5271da91d70ea7, type: 3}
+      propertyPath: alpha
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2164432502208030148, guid: edde723163b681847a5271da91d70ea7, type: 3}
       propertyPath: portalPair
       value: 
       objectReference: {fileID: 1245896041}
@@ -1309,11 +1313,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2164432502208030149, guid: edde723163b681847a5271da91d70ea7, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2164432502208030149, guid: edde723163b681847a5271da91d70ea7, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2164432502435144489, guid: edde723163b681847a5271da91d70ea7, type: 3}
       propertyPath: m_Color.a
@@ -2599,7 +2603,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.76862746}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

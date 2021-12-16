@@ -28,6 +28,7 @@ namespace Scripts.Weapon
                 (bulletTransform.position - prevPosition).normalized,
                 out RaycastHit tmp_Hit,
                 (bulletTransform.position - prevPosition).magnitude)) return;
+            if (tmp_Hit.collider.gameObject.layer == 3) return; // 这个Layer==对应的是Portal的Layer数字，需要根据情况修改
             var tmp_BulletEffect =
                 Instantiate(impactPrefab, tmp_Hit.point, Quaternion.LookRotation(tmp_Hit.normal, Vector3.up));
             Destroy(tmp_BulletEffect, 3);
@@ -35,11 +36,14 @@ namespace Scripts.Weapon
             var tmp_TagsWithAudio = impactAudioData.impactTagsWithAudios.Find(
                 (_tmp_AudioData) => { return _tmp_AudioData.tag.Equals(tmp_Hit.collider.tag); }
                 );
-            if (tmp_TagsWithAudio == null) return;
-            int tmp_Length = tmp_TagsWithAudio.impactAudioClips.Count;
-            AudioClip tmp_AudioClip = tmp_TagsWithAudio.impactAudioClips[Random.Range(0, tmp_Length)];
-            AudioSource.PlayClipAtPoint(tmp_AudioClip, tmp_Hit.point);
+            if (tmp_TagsWithAudio != null)
+            {
+                int tmp_Length = tmp_TagsWithAudio.impactAudioClips.Count;
+                AudioClip tmp_AudioClip = tmp_TagsWithAudio.impactAudioClips[Random.Range(0, tmp_Length)];
+                AudioSource.PlayClipAtPoint(tmp_AudioClip, tmp_Hit.point);
+            }
+
+            Destroy(gameObject);
         }
     }
-
 }

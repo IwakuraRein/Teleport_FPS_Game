@@ -19,7 +19,6 @@ TagManager:
   - Target
   - ExplosiveBarrel
   - Portal
-  - PortalableSurface
   layers:
   - Default
   - TransparentFX

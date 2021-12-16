@@ -424,6 +424,10 @@ PrefabInstance:
       propertyPath: sceneViewId
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -2333753271254224558, guid: 92117f8572c84fe44bcce0c072c32697, type: 3}
+      propertyPath: ObservedComponents.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8516673397418158, guid: 92117f8572c84fe44bcce0c072c32697, type: 3}
       propertyPath: m_Name
       value: Player Variant

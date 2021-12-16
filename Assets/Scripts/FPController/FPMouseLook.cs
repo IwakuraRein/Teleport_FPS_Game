@@ -26,7 +26,7 @@ public class FPMouseLook : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         if (!syncThisFrame) {
             var tmp_MouseX = Input.GetAxis("Mouse X");
@@ -47,7 +47,7 @@ public class FPMouseLook : MonoBehaviour
             //Debug.Log(cameraRotation.ToString() + cameraTransform.rotation.eulerAngles.ToString());
         }
         else {
-            if (cameraTransform.rotation.eulerAngles.x > 294)
+            if (cameraTransform.rotation.eulerAngles.x > 180)
                 cameraRotation.x = cameraTransform.rotation.eulerAngles.x-360;
             else cameraRotation.x = cameraTransform.rotation.eulerAngles.x;
             cameraRotation.y = cameraTransform.rotation.eulerAngles.y;

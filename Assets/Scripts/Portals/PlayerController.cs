@@ -37,22 +37,24 @@ public class PlayerController : PortalableObject
         base.Warp();
         mouseController.syncThisFrame = true;
         mouseController.enabled=true;
-        //Time.timeScale=0f;
+        
+        // MainCam.GetComponent<MainCam>().LockCollider=true;
+        // MainCam.GetComponent<MainCam>().ExitPortal();
         // cameraMove.ResetTargetRotation();
         TargetRotation = Quaternion.LookRotation(MainCam.transform.forward, Vector3.up);
     }
 
     public override void ExitPortal(Collider wallCollider)
     {
+        // MainCam.GetComponent<MainCam>().LockCollider=false;
         Physics.IgnoreCollision(GetComponent<CharacterController>(), wallCollider, false);
-        //Physics.IgnoreCollision(collider, wallCollider, false);
+
         --inPortalCount;
 
         if (inPortalCount == 0)
         {
             cloneObject.SetActive(false);
         }
-        Invoke("manageExit", 0);
     }
     public override void SetIsInPortal(Portal inPortal, Portal outPortal, Collider wallCollider)
     {
@@ -60,6 +62,7 @@ public class PlayerController : PortalableObject
         this.outPortal = outPortal;
 
         Physics.IgnoreCollision(GetComponent<CharacterController>(), wallCollider);
+        // Physics.IgnoreCollision(MainCam.GetComponent<Collider>(), inPortal.GetComponent<Collider>(), false);
         //Physics.IgnoreCollision(collider, wallCollider);
 
         cloneObject.SetActive(false);
@@ -67,9 +70,9 @@ public class PlayerController : PortalableObject
         ++inPortalCount;
     }
     
-    private void manageExit(){
-        MainCam.GetComponent<MainCam>().ExitPortal();
-    }
+    // private void manageExit(){
+    //     MainCam.GetComponent<MainCam>().ExitPortal();
+    // }
     
 
     // private void Start() {

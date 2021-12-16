@@ -29,10 +29,12 @@ public class Portal : MonoBehaviour
     public Renderer Renderer { get; private set; }
     private new BoxCollider collider;
     private GameObject player;
+    private GameObject mainCam;
 
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        mainCam = GameObject.FindGameObjectWithTag("MainCamera");
         collider = GetComponent<BoxCollider>();
         Renderer = GetComponent<Renderer>();
     }
@@ -61,34 +63,20 @@ public class Portal : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         var obj = other.GetComponent<PortalableObject>();
-        // var obj2 = other.GetComponent<CharacterController>();
-        // if (obj2 != null){
-        //     Debug.Log("player enters portal.");
-        //     portalObjects.Add(player.GetComponentInChildren<PortalableObject>());
-        //     player.GetComponentInChildren<PortalableObject>().SetIsInPortal(this, OtherPortal, wallCollider);
-        // }
-        // else if (obj != null)
         if (obj != null)
         {
             Debug.Log("something enters portal.");
             portalObjects.Add(obj);
             obj.SetIsInPortal(this, OtherPortal, wallCollider);
         }
+        // else if (other.CompareTag("MainCamera")){
+        //     mainCam.GetComponent<MainCam>().EnterPortal(this);
+        // }
     }
 
     private void OnTriggerExit(Collider other)
     {
         var obj = other.GetComponent<PortalableObject>();
-        // var obj2 = other.GetComponent<CharacterController>();
-        // if (obj2 != null){
-        //     obj = player.GetComponentInChildren<PortalableObject>();
-        //     if(portalObjects.Contains(obj)) {
-        //         Debug.Log("player exits portal.");
-        //         portalObjects.Remove(obj);
-        //         obj.ExitPortal(wallCollider);
-        //         //obj.Warp();
-        //     }
-        // }
         if(portalObjects.Contains(obj))
         {
             Debug.Log("something exit portal.");
@@ -96,6 +84,9 @@ public class Portal : MonoBehaviour
             obj.ExitPortal(wallCollider);
             //obj.Warp();
         }
+        // else if (other.CompareTag("MainCamera")){
+        //     mainCam.GetComponent<MainCam>().ExitPortal();
+        // }
     }
 
     public bool PlacePortal(Collider wallCollider, Vector3 pos, Quaternion rot)

@@ -28,7 +28,7 @@ namespace Scripts.Weapon
                 (bulletTransform.position - prevPosition).normalized,
                 out RaycastHit tmp_Hit,
                 (bulletTransform.position - prevPosition).magnitude)) return;
-            if (tmp_Hit.collider.gameObject.layer == 3) return; // 这个Layer==对应的是Portal的Layer数字，需要根据情况修改
+            if (tmp_Hit.collider.gameObject.layer == 10) return; // TODO
             var tmp_BulletEffect =
                 Instantiate(impactPrefab, tmp_Hit.point, Quaternion.LookRotation(tmp_Hit.normal, Vector3.up));
             Destroy(tmp_BulletEffect, 3);

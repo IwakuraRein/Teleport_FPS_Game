@@ -25,6 +25,7 @@ public class MainCam : MonoBehaviour
     private Quaternion halfTurn = Quaternion.Euler(0.0f, 180.0f, 0.0f);
     public bool insidePortal = false;
     public Portal inPortal;
+    public bool LockCollider = false;
 
     private void Awake()
     {
@@ -67,7 +68,7 @@ public class MainCam : MonoBehaviour
             }
         }
 
-        if(portals[1].Renderer.isVisible)
+        if (portals[1].Renderer.isVisible)
         {
             if (!insidePortal) portalCamera.targetTexture = tempTexture2;
             else portalCamera.targetTexture = null;
@@ -88,7 +89,7 @@ public class MainCam : MonoBehaviour
         cameraTransform.position = transform.position;
         cameraTransform.rotation = transform.rotation;
 
-        for(int i = 0; i <= iterationID; ++i)
+        for (int i = 0; i <= iterationID; ++i)
         {
             // Position the camera behind the other portal.
             Vector3 relativePos = inTransform.InverseTransformPoint(cameraTransform.position); //到世界坐标
@@ -116,18 +117,18 @@ public class MainCam : MonoBehaviour
     }
 
     // 玩家摄像机进入传送门后需要调整。
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("camera hits something");
-        inPortal = other.GetComponent<Portal>();
-        if (inPortal != null)
-        {
-            insidePortal = true;
-            portalCamera.enabled = true;
-            mainCamera.enabled = false;
-            Debug.Log("camera enter portal");
-        }
-    }
+    // private void OnTriggerEnter(Collider other)
+    // {
+    //     Debug.Log("camera hits something");
+    //     inPortal = other.GetComponent<Portal>();
+    //     if (inPortal != null)
+    //     {
+    //         insidePortal = true;
+    //         portalCamera.enabled = true;
+    //         mainCamera.enabled = false;
+    //         Debug.Log("camera enter portal");
+    //     }
+    // }
     // private void OnTriggerExit(Collider other)
     // {
     //     var obj = other.GetComponent<Portal>();
@@ -140,12 +141,24 @@ public class MainCam : MonoBehaviour
     //         Debug.Log("camera exit portal");
     //     }
     // }
-    public void ExitPortal(){
+    public void EnterPortal(Portal thisPortal)
+    {
+        if (!LockCollider)
+        {
+            inPortal = thisPortal;
+            insidePortal = true;
+            portalCamera.enabled = true;
+            mainCamera.enabled = false;
+            Debug.Log("camera enters portal");
+        }
+    }
+    public void ExitPortal()
+    {
         insidePortal = false;
         inPortal = null;
         mainCamera.enabled = true;
         portalCamera.enabled = false;
-        Debug.Log("camera exit portal");
+        Debug.Log("camera exits portal");
     }
 
 }

@@ -948,6 +948,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &550312716 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2164432502208030146, guid: edde723163b681847a5271da91d70ea7, type: 3}
+  m_PrefabInstance: {fileID: 733245044}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &651861505
 GameObject:
   m_ObjectHideFlags: 0
@@ -1329,7 +1334,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2164432502208030148, guid: edde723163b681847a5271da91d70ea7, type: 3}
   m_PrefabInstance: {fileID: 733245044}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 550312716}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5689706f89c34094ba5a773e254fe586, type: 3}
@@ -19218,6 +19223,8 @@ MonoBehaviour:
   aimingFOV: 26
   impactAudioData: {fileID: 11400000, guid: 49c10b295df439544ac2f935dd26f7aa, type: 2}
   spreadAngle: 60
+  fineCross: {fileID: 1755318733}
+  portalIndicater: {fileID: 550312716}
   bulletImpactPrefab: {fileID: 1879272669879180, guid: e3f361eacdeb09440850ac7397930cba, type: 3}
 --- !u!1 &6311187771286523003
 GameObject:

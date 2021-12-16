@@ -5,6 +5,10 @@ namespace Scripts.Weapon
 {
     public class AssualtRifle : Firearms
     {
+        [SerializeField]
+        private GameObject fineCross;
+        [SerializeField]
+        private GameObject portalIndicater;
         private IEnumerator reloadAmmoCheckCoroutine;
         private IEnumerator doAimCoroutine;
         private FPMouseLook mouseLook;
@@ -81,11 +85,15 @@ namespace Scripts.Weapon
             }
             if (Input.GetButtonDown("AimMouse") || Input.GetAxis("AimJoyStick") > 0)
             {
+                fineCross.SetActive(false);
+                portalIndicater.SetActive(false);
                 isAiming = true;
                 Aim();
             }
             if (Input.GetButtonUp("AimMouse"))
             {
+                fineCross.SetActive(true);
+                portalIndicater.SetActive(true);
                 isAiming = false;
                 Aim();
             }

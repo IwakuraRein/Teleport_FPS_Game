@@ -13,13 +13,15 @@ public class Crosshair : MonoBehaviour
 
     [SerializeField]
     private Image outPortalImg;
+    [SerializeField]
+    private float alpha = 196f;
 
     private void Start()
     {
         var portals = portalPair.Portals;
 
-        inPortalImg.color = portals[0].PortalColour;
-        outPortalImg.color = portals[1].PortalColour;
+        inPortalImg.color = new Vector4(portals[0].PortalColour.r, portals[0].PortalColour.g, portals[0].PortalColour.b, alpha);
+        outPortalImg.color = new Vector4(portals[1].PortalColour.r, portals[1].PortalColour.g, portals[1].PortalColour.b, alpha);
 
         inPortalImg.gameObject.SetActive(false);
         outPortalImg.gameObject.SetActive(false);

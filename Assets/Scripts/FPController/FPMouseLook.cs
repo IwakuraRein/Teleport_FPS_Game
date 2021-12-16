@@ -44,7 +44,7 @@ public class FPMouseLook : MonoBehaviour
 
             cameraTransform.rotation = Quaternion.Euler(cameraRotation.x, cameraRotation.y, 0);
             characterTransform.rotation = Quaternion.Euler(0, cameraRotation.y, 0);
-            Debug.Log(cameraRotation.ToString() + cameraTransform.rotation.eulerAngles.ToString());
+            //Debug.Log(cameraRotation.ToString() + cameraTransform.rotation.eulerAngles.ToString());
         }
         else {
             if (cameraTransform.rotation.eulerAngles.x > 294)

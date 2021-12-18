@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 2164432501932773540}
   - component: {fileID: 2164432501932773541}
   m_Layer: 5
-  m_Name: PortalCanvas
+  m_Name: HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

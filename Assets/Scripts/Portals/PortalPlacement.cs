@@ -25,6 +25,11 @@ public class PortalPlacement : MonoBehaviour
     [SerializeField]
     private LayerMask placementMask;
     [SerializeField]
+    private LayerMask checkIntersectMask;
+    [SerializeField]
+    private LayerMask checkIntersectMask2; //不包含portal层的mask。和portal相交时不启动自我修复（FixIntersects）。
+
+    [SerializeField]
     private Texture ableTexture, disableTexture;
 
 
@@ -191,10 +196,10 @@ public class PortalPlacement : MonoBehaviour
             // previewPortal.transform.position = testTransform.position;
             // previewPortal.transform.rotation = testTransform.rotation;
 
-            previewPortal.GetComponent<Renderer>().material.color = Color.green;
+            previewPortal.transform.GetChild(0).GetComponent<Renderer>().material.color = Color.green; //访问outline的renderer
             return true;
         }
-        previewPortal.GetComponent<MeshRenderer>().material.color = Color.red;
+        previewPortal.transform.GetChild(0).GetComponent<Renderer>().material.color = Color.red;  //访问outline的renderer
 
         return false;
     }
@@ -249,15 +254,16 @@ public class PortalPlacement : MonoBehaviour
             -Vector3.up
         };
 
-        var testDists = new List<float> { scale_1+0.1f, scale_1+0.1f, scale_1*2+0.1f, scale_1*2+0.1f };
+        // var testDists = new List<float> { scale_1+0.05f, scale_1+0.05f, scale_2*2+0.05f, scale_2*2+0.05f };
+        var testDists = new List<float> { scale_1, scale_1, scale_2*2-0.15f, scale_2*2-0.15f };
 
         for (int i = 0; i < 4; ++i)
         {
             RaycastHit hit;
-            Vector3 raycastPos = testTransform.TransformPoint(0.0f, 0.0f, -0.1f);
+            Vector3 raycastPos = testTransform.TransformPoint(0.0f, 0.0f, -0.05f);
             Vector3 raycastDir = testTransform.TransformDirection(testDirs[i]);
 
-            if (Physics.Raycast(raycastPos, raycastDir, out hit, testDists[i], placementMask))
+            if (Physics.Raycast(raycastPos, raycastDir, out hit, testDists[i], checkIntersectMask2))
             {
                 var offset = (hit.point - raycastPos);
                 var newOffset = -raycastDir * (testDists[i] - offset.magnitude);
@@ -269,29 +275,33 @@ public class PortalPlacement : MonoBehaviour
     // Once positioning has taken place, ensure the portal isn't intersecting anything.
     private bool CheckOverlap()
     {
-        var checkExtents = new Vector3(0.9f, 1.9f, 0.05f);
+        float offset = 0.15f;
+        float scale_1 = transform.localScale.x;
+        float scale_2 = transform.localScale.y;
+        var checkExtents = new Vector3(scale_1-offset, scale_2*2-2*offset, 0.05f);
 
         var checkPositions = new Vector3[]
         {
             testTransform.position + testTransform.TransformVector(new Vector3( 0.0f,  0.0f, -0.1f)),
 
-            testTransform.position + testTransform.TransformVector(new Vector3(-1.0f, -2.0f, -0.1f)),
-            testTransform.position + testTransform.TransformVector(new Vector3(-1.0f,  2.0f, -0.1f)),
-            testTransform.position + testTransform.TransformVector(new Vector3( 1.0f, -2.0f, -0.1f)),
-            testTransform.position + testTransform.TransformVector(new Vector3( 1.0f,  2.0f, -0.1f)),
+            testTransform.position + testTransform.TransformVector(new Vector3(-scale_1, -2*scale_2, -0.1f)),
+            testTransform.position + testTransform.TransformVector(new Vector3(-scale_1,  2*scale_2, -0.1f)),
+            testTransform.position + testTransform.TransformVector(new Vector3( scale_1, -2*scale_2, -0.1f)),
+            testTransform.position + testTransform.TransformVector(new Vector3( scale_1,  2*scale_2, -0.1f)),
 
             testTransform.TransformVector(new Vector3(0.0f, 0.0f, 0.2f))
         };
 
         // Ensure the portal does not intersect walls.
-        var intersections = Physics.OverlapBox(checkPositions[0], checkExtents, testTransform.rotation, placementMask);
-
+        var intersections = Physics.OverlapBox(checkPositions[0], checkExtents, testTransform.rotation, checkIntersectMask);
+        Debug.Log(intersections.Length);
         if(intersections.Length > 1)
         {
             return false;
         }
         else if(intersections.Length == 1) 
         {
+            
             // We are allowed to intersect the old portal position.
             if (intersections[0] != previewPortal.GetComponent<BoxCollider>())
             {

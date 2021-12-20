@@ -46,6 +46,6 @@ public class Launcher : MonoBehaviourPunCallbacks
     {
         base.OnJoinedRoom();
         Debug.Log(message: "Joined Room");
-        PhotonNetwork.Instantiate(PlayerPrefabName, Vector3.zero, Quaternion.identity);
+        PhotonNetwork.Instantiate(PlayerPrefabName, new Vector3(0,3,0), Quaternion.identity);
     }
 }

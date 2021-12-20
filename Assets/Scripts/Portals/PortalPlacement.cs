@@ -203,7 +203,7 @@ public class PortalPlacement : MonoBehaviour
 
         return false;
     }
-        private void FixOverhangs()
+    private void FixOverhangs()
     {
         float scale_1 = transform.localScale.x;
         float scale_2 = transform.localScale.y;
@@ -229,11 +229,11 @@ public class PortalPlacement : MonoBehaviour
             Vector3 raycastPos = testTransform.TransformPoint(testPoints[i]);
             Vector3 raycastDir = testTransform.TransformDirection(testDirs[i]);
 
-            if(Physics.CheckSphere(raycastPos, 0.05f, placementMask))
+            if(Physics.CheckSphere(raycastPos, 0.05f, checkIntersectMask))
             {
                 break;
             }
-            else if(Physics.Raycast(raycastPos, raycastDir, out hit, 2.1f, placementMask))
+            else if(Physics.Raycast(raycastPos, raycastDir, out hit, 2.1f, checkIntersectMask))
             {
                 var offset = hit.point - raycastPos;
                 testTransform.Translate(offset, Space.World);
@@ -294,7 +294,7 @@ public class PortalPlacement : MonoBehaviour
 
         // Ensure the portal does not intersect walls.
         var intersections = Physics.OverlapBox(checkPositions[0], checkExtents, testTransform.rotation, checkIntersectMask);
-        Debug.Log(intersections.Length);
+        //Debug.Log(intersections.Length);
         if(intersections.Length > 1)
         {
             return false;

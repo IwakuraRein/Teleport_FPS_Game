@@ -21,7 +21,7 @@ public class Launcher : MonoBehaviourPunCallbacks
     public void CreateRoom()
     {
         if (!connectedToMaster || joinedRoom) return;
-        PhotonNetwork.CreateRoom(RoomName.text, new Photon.Realtime.RoomOptions() { MaxPlayers = 16 }, null,null);
+        PhotonNetwork.CreateRoom(RoomName.text, new Photon.Realtime.RoomOptions() { MaxPlayers = 16 }, default);
     }
 
     public void JoinRoom()

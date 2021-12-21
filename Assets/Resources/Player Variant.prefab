@@ -2859,7 +2859,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2170816726797356757}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!167 &2050346058562550687
 AudioReverbZone:
   m_ObjectHideFlags: 0
@@ -8361,16 +8361,9 @@ MonoBehaviour:
   LocalScripts:
   - {fileID: 2170892111116673639}
   - {fileID: 2172229197115355972}
-  TPRenderers:
-  - {fileID: 881950428875561336}
-  - {fileID: 881747619395214516}
-  - {fileID: 879161006894188966}
-  - {fileID: 882030494902387878}
-  - {fileID: 879311970414487810}
   Gun_camera: {fileID: 2189156228468479893}
   Main_camera: {fileID: 2192294340617381103}
   Portal_camera: {fileID: 6859842404677244707}
-  FPArms: {fileID: 2172229197115355975}
 --- !u!1 &2170900070550767001
 GameObject:
   m_ObjectHideFlags: 0

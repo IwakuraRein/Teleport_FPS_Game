@@ -21972,7 +21972,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 3511
+    m_Bits: 4087
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -22181,7 +22181,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4274289036426502062}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 4
   m_BackGroundColor: {r: 0.33455884, g: 0.39889705, b: 0.5, a: 0.019607844}
@@ -27766,6 +27766,7 @@ MonoBehaviour:
   Main_camera: {fileID: 4259703081092969876}
   Portal_camera: {fileID: 8809629273926469208}
   FPArms: {fileID: 4275138180971045436}
+  PreviewPortal: {fileID: 4942978553660338370}
 --- !u!1 &4274400873186005586
 GameObject:
   m_ObjectHideFlags: 0
@@ -40663,7 +40664,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4313239195508354067
 RectTransform:
   m_ObjectHideFlags: 0

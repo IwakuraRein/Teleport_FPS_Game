@@ -13,6 +13,7 @@ public class LocalManager : MonoBehaviour
     public Camera Portal_camera;
     private PhotonView photonView;
     public GameObject FPArms;
+    public GameObject PreviewPortal;
 
     private void Start()
     {
@@ -23,10 +24,12 @@ public class LocalManager : MonoBehaviour
             return;
         }
 
+        PreviewPortal.SetActive(false);
         FPArms.SetActive(false);
         Gun_camera.enabled = false;
         Main_camera.enabled = false;
         Portal_camera.enabled = false;
+        GetComponent<PortalPlacement>().enabled = false;
 
         foreach (MonoBehaviour behaviour in LocalScripts)
         {

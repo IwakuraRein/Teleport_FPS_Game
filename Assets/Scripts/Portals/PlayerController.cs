@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//using UnityEngine.Rendering;
 
 public class PlayerController : PortalableObject
 {
@@ -16,12 +17,21 @@ public class PlayerController : PortalableObject
     public Vector3 camLocalPos;
     public Quaternion camLocalRot;
     public FPMouseLook mouseController;
+    //public GameObject third_person_character;
 
     protected override void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Physics.autoSyncTransforms = true;
         base.Awake();
+        //third_person_character.GetComponent<SkinnedMeshRenderer>().shadowCastingMode = ShadowCastingMode.ShadowsOnly;
+        //third_person_character.transform.GetChild(0).GetComponent<SkinnedMeshRenderer>().shadowCastingMode = ShadowCastingMode.ShadowsOnly;
+        //third_person_character.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().shadowCastingMode = ShadowCastingMode.ShadowsOnly;
+        //third_person_character.transform.GetChild(2).GetComponent<SkinnedMeshRenderer>().shadowCastingMode = ShadowCastingMode.ShadowsOnly;
+        //third_person_character.transform.GetChild(3).GetComponent<SkinnedMeshRenderer>().shadowCastingMode = ShadowCastingMode.ShadowsOnly;
+
+
+
         // cameraMove = GetComponent<CameraMove>();
         TargetRotation = MainCam.transform.rotation;
         MainCam = GameObject.FindGameObjectWithTag("MainCamera");

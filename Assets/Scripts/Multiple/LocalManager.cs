@@ -14,6 +14,7 @@ public class LocalManager : MonoBehaviour
     private PhotonView photonView;
     public GameObject FPArms;
     public GameObject PreviewPortal;
+    public GameObject HUD;
 
     private void Start()
     {
@@ -24,6 +25,7 @@ public class LocalManager : MonoBehaviour
             return;
         }
 
+        HUD.SetActive(false);
         PreviewPortal.SetActive(false);
         FPArms.SetActive(false);
         Gun_camera.enabled = false;

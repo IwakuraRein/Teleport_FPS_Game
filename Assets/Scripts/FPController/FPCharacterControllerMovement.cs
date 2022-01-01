@@ -24,7 +24,6 @@ public class FPCharacterControllerMovement : MonoBehaviour
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
-        characterAnimator = GetComponentInChildren<Animator>();
         characterTransform = transform;
         originalHeight = characterController.height;
     }
@@ -61,10 +60,13 @@ public class FPCharacterControllerMovement : MonoBehaviour
                 tmp_CurrentSpeed = Input.GetButton("Sprint") ? sprintSpeed : walkSpeed;
             }
 
-            var tmp_Velocity = characterController.velocity;
-            tmp_Velocity.y = 0;
-            velocity = tmp_Velocity.magnitude;
-            characterAnimator.SetFloat("Velocity", velocity, 0.25f, Time.deltaTime);
+            if (characterAnimator != null)
+            {
+                var tmp_Velocity = characterController.velocity;
+                tmp_Velocity.y = 0;
+                velocity = tmp_Velocity.magnitude;
+                characterAnimator.SetFloat("Velocity", velocity, 0.25f, Time.deltaTime);
+            }
         }
 
         movementDirection.y -= gravity * Time.deltaTime;
@@ -80,5 +82,10 @@ public class FPCharacterControllerMovement : MonoBehaviour
 
             characterController.height = Mathf.SmoothDamp(characterController.height, _target, ref tmp_CurrentHeight, Time.deltaTime * 5);
         }
+    }
+
+    internal void SetupAnimator(Animator _animator)
+    {
+        characterAnimator = _animator;
     }
 }

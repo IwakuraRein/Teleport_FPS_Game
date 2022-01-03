@@ -10,6 +10,7 @@ public class WeaponManager : MonoBehaviour
 
     private Firearms carriedWeapon;
     private FPCharacterControllerMovement fPCharacterControllerMovement;
+    private IEnumerator waitingForHolsterEndCoroutine;
 
     private void Start()
     {
@@ -52,17 +53,70 @@ public class WeaponManager : MonoBehaviour
     {
         if (Input.GetButtonDown("SwitchMainWeapon"))
         {
-            carriedWeapon.gameObject.SetActive(false);
-            carriedWeapon = mainWeapon;
-            carriedWeapon.gameObject.SetActive(true);
-            fPCharacterControllerMovement.SetupAnimator(carriedWeapon.gunAnimator);
+            if (carriedWeapon == mainWeapon)
+            {
+                return ;
+            }
+            if (carriedWeapon.gameObject.activeInHierarchy)
+            {
+                StartWaitingForHolsterEndCoroutine();
+                carriedWeapon.gunAnimator.SetTrigger("holster");
+            }
+            else
+            {
+                SetupCarriedWeapon(mainWeapon);
+            }
         }
         if (Input.GetButtonDown("SwitchSecondaryWeapon"))
         {
-            carriedWeapon.gameObject.SetActive(false);
-            carriedWeapon = secondaryWeapon;
-            carriedWeapon.gameObject.SetActive(true);
-            fPCharacterControllerMovement.SetupAnimator(carriedWeapon.gunAnimator);
+            if (carriedWeapon == secondaryWeapon)
+            {
+                return;
+            }
+            if (carriedWeapon.gameObject.activeInHierarchy)
+            {
+                StartWaitingForHolsterEndCoroutine();
+                carriedWeapon.gunAnimator.SetTrigger("holster");
+            }
+            else
+            {
+                SetupCarriedWeapon(secondaryWeapon);
+            }
         }
+    }
+
+    private void StartWaitingForHolsterEndCoroutine()
+    {
+        if (waitingForHolsterEndCoroutine == null)
+        {
+            waitingForHolsterEndCoroutine = WaitingForHolsterEnd();
+        }
+        StartCoroutine(waitingForHolsterEndCoroutine);
+    }
+
+    private IEnumerator WaitingForHolsterEnd()
+    {
+        while (true)
+        {
+            AnimatorStateInfo tmp_AnimatorStateInfo = carriedWeapon.gunAnimator.GetCurrentAnimatorStateInfo(0);
+            if (tmp_AnimatorStateInfo.IsTag("holster"))
+            {
+                if (tmp_AnimatorStateInfo.normalizedTime >= 0.9f)
+                {
+                    var tmp_TargetWeapon = carriedWeapon == mainWeapon ? secondaryWeapon : mainWeapon;
+                    SetupCarriedWeapon(tmp_TargetWeapon);
+                    waitingForHolsterEndCoroutine = null;
+                    yield break;
+                }
+            }
+            yield return null;
+        }
+    }
+
+    private void SetupCarriedWeapon(Firearms _targetWeapon)
+    {
+        carriedWeapon.gameObject.SetActive(false);
+        carriedWeapon = _targetWeapon;
+        carriedWeapon.gameObject.SetActive(true);
     }
 }

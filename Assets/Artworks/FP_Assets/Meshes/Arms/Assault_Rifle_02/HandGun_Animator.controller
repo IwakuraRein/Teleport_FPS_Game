@@ -583,7 +583,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HandGun_Animator_1
+  m_Name: HandGun_Animator
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Velocity

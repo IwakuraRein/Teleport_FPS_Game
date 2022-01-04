@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using ExitGames.Client.Photon;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
+using Random = UnityEngine.Random;
 
 namespace Scripts.Weapon
 {
     public class Bullet : MonoBehaviour
     {
         public float bulletSpeed; 
-        public GameObject impactPrefab;
-        public ImpactAudioData impactAudioData;
 
         private Vector3 prevPosition;
         private RaycastHit thisHit;
@@ -31,20 +33,17 @@ namespace Scripts.Weapon
 
             if (!Shoot(dir)) return;
 
-            var tmp_BulletEffect =
-                Instantiate(impactPrefab, thisHit.point, Quaternion.LookRotation(thisHit.normal, Vector3.up));
+            //调用Photon框架发送子弹数据
+            Dictionary<byte, object> tmp_HitData = new Dictionary<byte, object>();
+            tmp_HitData.Add(0, thisHit.point);
+            tmp_HitData.Add(1, thisHit.normal);
+            tmp_HitData.Add(2, thisHit.collider.tag);
 
-            Destroy(tmp_BulletEffect, 3);
 
-            var tmp_TagsWithAudio = impactAudioData.impactTagsWithAudios.Find(
-                (_tmp_AudioData) => { return _tmp_AudioData.tag.Equals(thisHit.collider.tag); }
-                );
-            if (tmp_TagsWithAudio != null)
-            {
-                int tmp_Length = tmp_TagsWithAudio.impactAudioClips.Count;
-                AudioClip tmp_AudioClip = tmp_TagsWithAudio.impactAudioClips[Random.Range(0, tmp_Length)];
-                AudioSource.PlayClipAtPoint(tmp_AudioClip, thisHit.point);
-            }
+            RaiseEventOptions tmp_RaiseEventOptions = new RaiseEventOptions() { Receivers = ReceiverGroup.All };
+            SendOptions tmp_SendOptions = SendOptions.SendReliable;
+            PhotonNetwork.RaiseEvent((byte)EventCode.HitObject, tmp_HitData, tmp_RaiseEventOptions, tmp_SendOptions);
+
 
             Destroy(gameObject);
         }
@@ -104,6 +103,7 @@ namespace Scripts.Weapon
                 thisHit = tmp_Hit;
                 return true;
             }
+
         }
         private void OnDrawGizmos()
         {

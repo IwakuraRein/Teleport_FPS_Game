@@ -98,8 +98,6 @@ namespace Scripts.Weapon
             GameObject tmp_Bullet = Instantiate(bulletPrefab, muzzlePoint.position, muzzlePoint.rotation);
             tmp_Bullet.transform.eulerAngles += CalculateSpreadOffset();
             var tmp_BulletScript = tmp_Bullet.AddComponent<Bullet>();
-            tmp_BulletScript.impactPrefab = bulletImpactPrefab;
-            tmp_BulletScript.impactAudioData = impactAudioData;
             tmp_BulletScript.bulletSpeed = 100;
             if (tmp_Bullet != null)
             {

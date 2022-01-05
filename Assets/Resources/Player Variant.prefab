@@ -33029,10 +33029,11 @@ GameObject:
   - component: {fileID: 4274364285443470178}
   - component: {fileID: 4274364285443470179}
   - component: {fileID: 4274364285443470177}
-  - component: {fileID: 9001727906260321305}
   - component: {fileID: 1338954475502658474}
+  - component: {fileID: 9001727906260321305}
   - component: {fileID: 980636457786061593}
   - component: {fileID: 7670930641705267114}
+  - component: {fileID: 8567638690550474835}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -33307,22 +33308,6 @@ MonoBehaviour:
   camLocalPos: {x: 0, y: 0, z: 0}
   camLocalRot: {x: 0, y: 0, z: 0, w: 0}
   mouseController: {fileID: 4275138180971045439}
---- !u!114 &9001727906260321305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4274364285443470106}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
-  m_UseLocal: 1
 --- !u!114 &1338954475502658474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33346,6 +33331,22 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &9001727906260321305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4274364285443470106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!114 &980636457786061593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33392,6 +33393,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ImpactPrefab: {fileID: 1879272669879180, guid: 610621a35a4867f41ac69e30008489a3, type: 3}
   ImpactAudioData: {fileID: 11400000, guid: 49c10b295df439544ac2f935dd26f7aa, type: 2}
+--- !u!114 &8567638690550474835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4274364285443470106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffff074e675e1d84a9f73057ab7991c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Heath: 100
 --- !u!1 &4274400873186005586
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,6 +16,8 @@ TagManager:
   - Water
   - Wood
   - FX
+  - Portal
+  - GlobalCamera
   layers:
   - Default
   - TransparentFX

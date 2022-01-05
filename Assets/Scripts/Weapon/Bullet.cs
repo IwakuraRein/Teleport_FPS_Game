@@ -4,6 +4,7 @@ using ExitGames.Client.Photon;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityTemplateProjects.MultiplayerScripts;
 using Random = UnityEngine.Random;
 
 namespace Scripts.Weapon
@@ -32,6 +33,11 @@ namespace Scripts.Weapon
             var dir = (transform.position - prevPosition).normalized;
 
             if (!Shoot(dir)) return;
+
+            if (thisHit.collider.TryGetComponent(out IDamager tmp_Damager))
+            {
+                tmp_Damager.TakeDamage(10);
+            }
 
             //调用Photon框架发送子弹数据
             Dictionary<byte, object> tmp_HitData = new Dictionary<byte, object>();

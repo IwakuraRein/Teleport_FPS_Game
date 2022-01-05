@@ -47,7 +47,24 @@ public class Launcher : MonoBehaviourPunCallbacks
     {
         base.OnJoinedRoom();
         Debug.Log(message: "Joined Room");
-        PhotonNetwork.Instantiate(PlayerPrefabName, new Vector3(Random.Range(-25, 25),3, Random.Range(-25, 25)), Quaternion.identity);
-        
+        StartSpawn(0);
+        Player.Respawn += StartSpawn;   
+    }
+
+    public override void OnLeftRoom()
+    {
+        base.OnLeftRoom();
+        Player.Respawn -= StartSpawn;
+    }
+
+    private void StartSpawn(float _timeToSpawn)
+    {
+        StartCoroutine(routine: WaitToInstantiatatePlayer(0));
+    }
+
+    private IEnumerator WaitToInstantiatatePlayer(float _timeSpawn)
+    {
+        yield return new WaitForSeconds(_timeSpawn);
+        PhotonNetwork.Instantiate(PlayerPrefabName, new Vector3(Random.Range(-25, 25), 3, Random.Range(-25, 25)), Quaternion.identity);
     }
 }

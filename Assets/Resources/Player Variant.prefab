@@ -33406,6 +33406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Heath: 100
+  PlayerPrefabName: Player Variant
 --- !u!1 &4274400873186005586
 GameObject:
   m_ObjectHideFlags: 0
@@ -40379,6 +40380,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4313239196311877709}
+  - component: {fileID: 4416527595502589670}
+  - component: {fileID: 3433487851918483684}
   m_Layer: 0
   m_Name: Portals
   m_TagString: Untagged
@@ -40402,6 +40405,45 @@ Transform:
   m_Father: {fileID: 6288733404868352689}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4416527595502589670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4313239196311877710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 3433487851918483684}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &3433487851918483684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4313239196311877710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &4313239196469164834
 GameObject:
   m_ObjectHideFlags: 0
@@ -78731,19 +78773,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7dc8fd3d374be6b41815bc11e60d5b26, type: 3}
---- !u!23 &1531099201419211786 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 2300008, guid: 7dc8fd3d374be6b41815bc11e60d5b26, type: 3}
-  m_PrefabInstance: {fileID: 1531099201417178210}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1531099201417311970 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 7dc8fd3d374be6b41815bc11e60d5b26, type: 3}
-  m_PrefabInstance: {fileID: 1531099201417178210}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &1531099201419211778 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 2300000, guid: 7dc8fd3d374be6b41815bc11e60d5b26, type: 3}
   m_PrefabInstance: {fileID: 1531099201417178210}
   m_PrefabAsset: {fileID: 0}
 --- !u!23 &1531099201419211776 stripped
@@ -78759,5 +78791,15 @@ MeshRenderer:
 --- !u!23 &1531099201419211780 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 2300006, guid: 7dc8fd3d374be6b41815bc11e60d5b26, type: 3}
+  m_PrefabInstance: {fileID: 1531099201417178210}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1531099201419211786 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2300008, guid: 7dc8fd3d374be6b41815bc11e60d5b26, type: 3}
+  m_PrefabInstance: {fileID: 1531099201417178210}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1531099201419211778 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2300000, guid: 7dc8fd3d374be6b41815bc11e60d5b26, type: 3}
   m_PrefabInstance: {fileID: 1531099201417178210}
   m_PrefabAsset: {fileID: 0}

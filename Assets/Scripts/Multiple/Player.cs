@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 using UnityTemplateProjects.MultiplayerScripts;
+using Random = UnityEngine.Random;
 
 //Rhoton组件 Remote Procedure Call
 [RequireComponent(typeof(PhotonView))]
 public class Player : MonoBehaviour, IDamager
 {
     public int Heath;
+    public string PlayerPrefabName;
     private PhotonView photonView;
     private GameObject globalCamera;
 
@@ -39,12 +41,13 @@ public class Player : MonoBehaviour, IDamager
         {
             //gameObject.SetActive(false);
             PhotonNetwork.Destroy(this.gameObject);
-            if (globalCamera)
-                globalCamera.SetActive(true);
+            //if (globalCamera)
+            //    globalCamera.SetActive(true);
 
-            Respawn?.Invoke(3);
+            //Respawn?.Invoke(3);
 
-            return;
+            //return;
+            PhotonNetwork.Instantiate(PlayerPrefabName, new Vector3(Random.Range(-25, 25), 3, Random.Range(-25, 25)), Quaternion.identity);
         }
 
         Heath -= _damage;

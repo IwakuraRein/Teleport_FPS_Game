@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
+using Random = UnityEngine.Random;
 
 public class Launcher : MonoBehaviourPunCallbacks
 {
@@ -46,6 +47,7 @@ public class Launcher : MonoBehaviourPunCallbacks
     {
         base.OnJoinedRoom();
         Debug.Log(message: "Joined Room");
-        PhotonNetwork.Instantiate(PlayerPrefabName, new Vector3(0,3,0), Quaternion.identity);
+        PhotonNetwork.Instantiate(PlayerPrefabName, new Vector3(Random.Range(-25, 25),3, Random.Range(-25, 25)), Quaternion.identity);
+        
     }
 }

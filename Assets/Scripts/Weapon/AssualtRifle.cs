@@ -5,26 +5,16 @@ namespace Scripts.Weapon
 {
     public class AssualtRifle : Firearms
     {
-        [SerializeField]
-        private GameObject fineCross;
-        [SerializeField]
-        private GameObject portalIndicater;
         private IEnumerator reloadAmmoCheckCoroutine;
-        private IEnumerator doAimCoroutine;
         private FPMouseLook mouseLook;
-        
+
         public GameObject bulletImpactPrefab;
         public bool isFiring { get; private set; }
-        // public LayerMask portalLayer;
-        // public LayerMask defaultRaycastLayer;
 
-        protected override void Start()
+        protected override void Awake()
         {
-            // Debug.Log(portalLayer.value);
-            // Debug.Log(defaultRaycastLayer.value);
-            base.Start();
+            base.Awake();
             reloadAmmoCheckCoroutine = CheckReloadAmmoAnimationEnd();
-            doAimCoroutine = DoAim();
             mouseLook = FindObjectOfType<FPMouseLook>();
         }
 
@@ -81,39 +71,33 @@ namespace Scripts.Weapon
             lastFireTime = Time.time;
         }
 
-        private void Update()
-        {
-            if (Input.GetButton("FireMouse") || Input.GetAxis("FireJoyStick") < 0)
-            {
-                DoAttack();
-            }
-            if (Input.GetButtonDown("Reload"))
-            {
-                Reload();
-            }
-            if (Input.GetButtonDown("AimMouse") || Input.GetAxis("AimJoyStick") > 0)
-            {
-                fineCross.SetActive(false);
-                portalIndicater.SetActive(false);
-                isAiming = true;
-                Aim();
-            }
-            if (Input.GetButtonUp("AimMouse"))
-            {
-                fineCross.SetActive(true);
-                portalIndicater.SetActive(true);
-                isAiming = false;
-                Aim();
-            }
-        }
+        //private void Update()
+        //{
+        //    if (Input.GetButton("FireMouse") || Input.GetAxis("FireJoyStick") < 0)
+        //    {
+        //        DoAttack();
+        //    }
+        //    if (Input.GetButtonDown("Reload"))
+        //    {
+        //        Reload();
+        //    }
+        //    if (Input.GetButtonDown("AimMouse") || Input.GetAxis("AimJoyStick") > 0)
+        //    {
+        //        isAiming = true;
+        //        Aim();
+        //    }
+        //    if (Input.GetButtonUp("AimMouse"))
+        //    {
+        //        isAiming = false;
+        //        Aim();
+        //    }
+        //}
 
         protected void CreateBullet()
         {
             GameObject tmp_Bullet = Instantiate(bulletPrefab, muzzlePoint.position, muzzlePoint.rotation);
             tmp_Bullet.transform.eulerAngles += CalculateSpreadOffset();
             var tmp_BulletScript = tmp_Bullet.AddComponent<Bullet>();
-            tmp_BulletScript.impactPrefab = bulletImpactPrefab;
-            tmp_BulletScript.impactAudioData = impactAudioData;
             tmp_BulletScript.bulletSpeed = 100;
             if (tmp_Bullet != null)
             {
@@ -121,69 +105,21 @@ namespace Scripts.Weapon
             }
         }
 
-        private IEnumerator CheckReloadAmmoAnimationEnd()
-        {
-            isReloading = true;
-            while (true)
-            {
-                yield return null;
-                gunStateInfo = gunAnimator.GetCurrentAnimatorStateInfo(2);
-                if (gunStateInfo.IsTag("ReloadAmmo"))
-                {
-                    if (gunStateInfo.normalizedTime >= 0.9f)
-                    {
-                        int tmp_NeedAmmoCount = ammoInMag - currentAmmo;
-                        int tmp_RemainingAmmo = currentMaxAmmoCarried - tmp_NeedAmmoCount;
-                        if (tmp_RemainingAmmo <= 0)
-                        {
-                            currentAmmo += currentMaxAmmoCarried;
-                        }
-                        else
-                        {
-                            currentAmmo = ammoInMag;
-                        }
-
-                        currentMaxAmmoCarried = tmp_RemainingAmmo <= 0 ? 0 : tmp_RemainingAmmo;
-
-                        isReloading = false;
-                        yield break;
-                    }
-                }
-            }
-        }
-
-        private IEnumerator DoAim()
-        {
-            while (true)
-            {
-                yield return null;
-
-                float tmp_CurrentFOV = 0;
-                eyeCamera.fieldOfView = 
-                    Mathf.SmoothDamp(
-                        eyeCamera.fieldOfView, 
-                        isAiming ? aimingFOV : originFOV, 
-                        ref tmp_CurrentFOV, 
-                        Time.deltaTime * 2);
-
-            }
-        }
-
-        protected override void Aim()
-        {
-            gunAnimator.SetBool("Aim", isAiming);
-            if (doAimCoroutine == null)
-            {
-                doAimCoroutine = DoAim();
-                StartCoroutine(doAimCoroutine);
-            }
-            else
-            {
-                StopCoroutine(doAimCoroutine);
-                doAimCoroutine = null;
-                doAimCoroutine = DoAim();
-                StartCoroutine(doAimCoroutine);
-            }
-        }
+        //protected override void Aim()
+        //{
+        //    gunAnimator.SetBool("Aim", isAiming);
+        //    if (doAimCoroutine == null)
+        //    {
+        //        doAimCoroutine = DoAim();
+        //        StartCoroutine(doAimCoroutine);
+        //    }
+        //    else
+        //    {
+        //        StopCoroutine(doAimCoroutine);
+        //        doAimCoroutine = null;
+        //        doAimCoroutine = DoAim();
+        //        StartCoroutine(doAimCoroutine);
+        //    }
+        //}
     }
 }

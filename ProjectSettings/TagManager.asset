@@ -16,22 +16,21 @@ TagManager:
   - Water
   - Wood
   - FX
-  - Target
-  - ExplosiveBarrel
   - Portal
+  - GlobalCamera
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - PreUI
+  - Portal
   - Water
   - UI
   - Player
   - Gun
-  - PortalSurface
-  - PreviewPortal
-  - Portal
-  - PlayerBody
+  - Item
+  - 
+  - 
+  - 
   - 
   - 
   - 

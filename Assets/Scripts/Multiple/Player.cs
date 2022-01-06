@@ -14,11 +14,14 @@ public class Player : MonoBehaviour, IDamager
     public string PlayerPrefabName;
     private PhotonView photonView;
     private GameObject globalCamera;
+    public ScoreManager scoreManager;
 
     public static event Action<float> Respawn;
 
+    private bool hasDead=false;
     private void Start()
     {
+        scoreManager = (ScoreManager)FindObjectOfType(typeof(ScoreManager));
         photonView = GetComponent<PhotonView>();
         if (photonView.IsMine)
         {
@@ -55,6 +58,11 @@ public class Player : MonoBehaviour, IDamager
 
     private bool IsDeath()
     {
+        if (Heath <= 0&&hasDead==false)
+        {
+            hasDead = true;
+            scoreManager.AddOurPoint();
+        }
         return Heath <= 0;
     }
 }

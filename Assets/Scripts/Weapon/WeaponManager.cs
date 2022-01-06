@@ -14,7 +14,7 @@ public class WeaponManager : MonoBehaviour
     public LayerMask checkItemLayerMask;
     public List<Firearms> arms = new List<Firearms>();
 
-    private Firearms carriedWeapon;
+    public Firearms carriedWeapon;
     private FPCharacterControllerMovement fPCharacterControllerMovement;
     private IEnumerator waitingForHolsterEndCoroutine;
 

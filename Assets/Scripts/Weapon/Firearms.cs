@@ -25,8 +25,8 @@ namespace Scripts.Weapon
         internal Animator gunAnimator;
 
         protected AnimatorStateInfo gunStateInfo;
-        protected int currentAmmo;
-        protected int currentMaxAmmoCarried;
+        public int currentAmmo;
+        public int currentMaxAmmoCarried;
         protected float lastFireTime;
         protected float originFOV;
         protected bool isReloading = false;

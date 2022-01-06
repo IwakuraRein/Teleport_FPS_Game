@@ -6,37 +6,39 @@ using UnityEngine.UI;
 public class DataManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    public Text score1Text, score2Text;
-    public string score1, score2;
+
     public Text rifleAmmoText, handGunAmmoText;
-    public string rifleAmmo, handGunAmmo;
-    public GameObject rifle,handGun;
+    public GameObject rifleUI,handGunUI;
     public string currentWeapon;
     public Slider lifeSlider;
-    public float life;
-
+    public Player player;
+    public Scripts.Weapon.AssualtRifle rifile;
+    public Scripts.Weapon.AssualtRifle handgun;
+    public WeaponManager weaponManager;
     void Start()
     {
+        
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(currentWeapon=="Rifle")
+        string name = weaponManager.carriedWeapon.name;
+        
+        if (name== "arms_assault_rifle_01")
         {
-            rifle.SetActive(true);
-            handGun.SetActive(false);
+            rifleUI.SetActive(true);
+            handGunUI.SetActive(false);
         }
-        else if(currentWeapon=="HandGun")
+        else if(name == "arms_handgun_01")
         {
-            rifle.SetActive(false);
-            handGun.SetActive(true);
+            rifleUI.SetActive(false);
+            handGunUI.SetActive(true);
         }
-        score1Text.text = score1;
-        score2Text.text = score2;
-        rifleAmmoText.text = rifleAmmo;
-        handGunAmmoText.text = handGunAmmo;
-        lifeSlider.value = life;
+
+        rifleAmmoText.text = rifile.currentAmmo.ToString() + "/" + rifile.currentMaxAmmoCarried.ToString();
+        handGunAmmoText.text = handgun.currentAmmo.ToString() + "/" + handgun.currentMaxAmmoCarried.ToString();
+        lifeSlider.value = player.Heath*1.0f/100;
     }
 }

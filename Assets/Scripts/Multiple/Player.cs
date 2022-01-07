@@ -41,9 +41,10 @@ public class Player : MonoBehaviour, IDamager
     [PunRPC]
     private void RPC_TakeDamage(int _damage, PhotonMessageInfo _info)
     {
-        if (IsDeath() && photonView.IsMine)
+        if (IsDeath() && photonView.IsMine && hasDead == false)
         {
-            //gameObject.SetActive(false);
+            hasDead = true;
+            scoreManager.AddEnemyPoint();
             PhotonNetwork.Destroy(this.gameObject);
             Destroy(Delete);
             if (globalCamera)
@@ -53,6 +54,11 @@ public class Player : MonoBehaviour, IDamager
 
             return;
         }
+        else if (IsDeath() && hasDead == false)
+        {
+            hasDead = true;
+            scoreManager.AddOurPoint();
+        }
 
         Heath -= _damage;
     }
@@ -60,11 +66,6 @@ public class Player : MonoBehaviour, IDamager
 
     private bool IsDeath()
     {
-        if (Heath <= 0 && hasDead == false)
-        {
-            hasDead = true;
-            scoreManager.AddOurPoint();
-        }
         return Heath <= 0;
     }
 }

@@ -15,6 +15,7 @@ public class LocalManager : MonoBehaviour
     public GameObject FPArms;
     public GameObject PreviewPortal;
     public GameObject HUD;
+    public GameObject EnemyBody;
 
     private void Start()
     {
@@ -22,6 +23,12 @@ public class LocalManager : MonoBehaviour
         if (photonView.IsMine)
         {
             gameObject.AddComponent<AudioListener>();
+            for (int i = 0; i < EnemyBody.transform.childCount; i++)
+            {
+                var child = EnemyBody.transform.GetChild(i).gameObject;
+                Debug.Log(LayerMask.NameToLayer("PlayerBody"));
+                child.layer = LayerMask.NameToLayer("PlayerBody");
+            }
             return;
         }
 
@@ -32,6 +39,12 @@ public class LocalManager : MonoBehaviour
         Main_camera.enabled = false;
         Portal_camera.enabled = false;
         GetComponent<PortalPlacement>().enabled = false;
+        EnemyBody.layer = LayerMask.NameToLayer("PlayerBody2");
+        for (int i = 0; i < EnemyBody.transform.childCount; i++)
+        {
+            var child = EnemyBody.transform.GetChild(i).gameObject;
+            child.layer = LayerMask.NameToLayer("PlayerBody2");
+        }
 
         foreach (MonoBehaviour behaviour in LocalScripts)
         {

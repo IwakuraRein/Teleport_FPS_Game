@@ -36,7 +36,7 @@ namespace Scripts.Weapon
 
             if (thisHit.collider.TryGetComponent(out IDamager tmp_Damager))
             {
-                tmp_Damager.TakeDamage(10);
+                tmp_Damager.TakeDamage(30);
             }
 
             //调用Photon框架发送子弹数据

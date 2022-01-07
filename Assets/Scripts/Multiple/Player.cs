@@ -12,6 +12,7 @@ public class Player : MonoBehaviour, IDamager
 {
     public int Heath;
     public string PlayerPrefabName;
+    public GameObject Delete;
     private PhotonView photonView;
     private GameObject globalCamera;
     public ScoreManager scoreManager;
@@ -44,6 +45,7 @@ public class Player : MonoBehaviour, IDamager
         {
             //gameObject.SetActive(false);
             PhotonNetwork.Destroy(this.gameObject);
+            Destroy(Delete);
             if (globalCamera)
                 globalCamera.SetActive(true);
 

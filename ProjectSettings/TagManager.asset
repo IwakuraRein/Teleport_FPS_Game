@@ -28,9 +28,9 @@ TagManager:
   - Player
   - Gun
   - Item
-  - 
-  - 
-  - 
+  - PlayerBody
+  - PlayerBody2
+  - GlobalCamera
   - 
   - 
   - 

@@ -10,6 +10,8 @@ public class Launcher : MonoBehaviourPunCallbacks
     public InputField RoomName;
 
     public string PlayerPrefabName;
+    public Transform spawnPoint1;
+    public Transform spawnPoint2;
     private bool connectedToMaster;
     private bool joinedRoom;
 
@@ -65,6 +67,10 @@ public class Launcher : MonoBehaviourPunCallbacks
     private IEnumerator WaitToInstantiatatePlayer(float _timeSpawn)
     {
         yield return new WaitForSeconds(_timeSpawn);
-        PhotonNetwork.Instantiate(PlayerPrefabName, new Vector3(Random.Range(-25, 25), 3, Random.Range(-25, 25)), Quaternion.identity);
+        //PhotonNetwork.Instantiate(PlayerPrefabName, new Vector3(-14, 3, 8), Quaternion.identity);
+        if(Random.Range(0,2)==1)
+            PhotonNetwork.Instantiate(PlayerPrefabName, spawnPoint1.position, Quaternion.identity);
+        else
+            PhotonNetwork.Instantiate(PlayerPrefabName, spawnPoint2.position, Quaternion.identity);
     }
 }

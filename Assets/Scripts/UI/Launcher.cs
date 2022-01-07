@@ -13,6 +13,7 @@ public class Launcher : MonoBehaviourPunCallbacks
     public Transform spawnPoint1;
     public Transform spawnPoint2;
     public Camera MenuCamera;
+    public GameObject ScoreUI;
     private bool connectedToMaster;
     private bool joinedRoom;
 
@@ -51,6 +52,10 @@ public class Launcher : MonoBehaviourPunCallbacks
     {
         base.OnJoinedRoom();
         Debug.Log(message: "Joined Room");
+        
+        MenuCamera.tag = "Untagged";
+        ScoreUI.SetActive(true);
+
         StartSpawn(0);
         Player.Respawn += StartSpawn;   
     }
@@ -69,7 +74,6 @@ public class Launcher : MonoBehaviourPunCallbacks
     private IEnumerator WaitToInstantiatatePlayer(float _timeSpawn)
     {
         yield return new WaitForSeconds(_timeSpawn);
-        MenuCamera.tag = "Untagged";
         if (Random.Range(0,2)==1)
             PhotonNetwork.Instantiate(PlayerPrefabName, spawnPoint1.position, Quaternion.identity);
         else

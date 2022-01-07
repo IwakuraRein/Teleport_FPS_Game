@@ -60,7 +60,7 @@ public class Player : MonoBehaviour, IDamager
 
     private bool IsDeath()
     {
-        if (Heath <= 0&&hasDead==false)
+        if (Heath <= 0 && hasDead == false)
         {
             hasDead = true;
             scoreManager.AddOurPoint();

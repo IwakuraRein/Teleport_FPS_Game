@@ -16,6 +16,7 @@ public class LocalManager : MonoBehaviour
     public GameObject PreviewPortal;
     public GameObject HUD;
     public GameObject EnemyBody;
+    public GameObject PlayingUI;
 
     private void Start()
     {
@@ -34,6 +35,7 @@ public class LocalManager : MonoBehaviour
         HUD.SetActive(false);
         PreviewPortal.SetActive(false);
         FPArms.SetActive(false);
+        PlayingUI.SetActive(false);
         Gun_camera.enabled = false;
         Main_camera.enabled = false;
         Portal_camera.enabled = false;

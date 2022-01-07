@@ -1415,6 +1415,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScoreUI
       objectReference: {fileID: 0}
+    - target: {fileID: 4979174937888684764, guid: 0b1a456ed746e4648a3379570f176a0b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b1a456ed746e4648a3379570f176a0b, type: 3}
 --- !u!1 &1290692739

@@ -13,7 +13,7 @@ public class Player : MonoBehaviour, IDamager
     public int Heath;
     public string PlayerPrefabName;
     private PhotonView photonView;
-    private GameObject globalCamera;
+    private GameObject GlobalCamera;
 
     public static event Action<float> Respawn;
 
@@ -22,9 +22,9 @@ public class Player : MonoBehaviour, IDamager
         photonView = GetComponent<PhotonView>();
         if (photonView.IsMine)
         {
-            globalCamera = GameObject.FindWithTag("GlobalCamera");
-            if (globalCamera)
-                globalCamera.SetActive(false);
+            GlobalCamera = GameObject.FindWithTag("GlobalCamera");
+            if (GlobalCamera)
+                GlobalCamera.SetActive(false);
         }
     }
 
@@ -41,10 +41,11 @@ public class Player : MonoBehaviour, IDamager
         {
             //gameObject.SetActive(false);
             PhotonNetwork.Destroy(this.gameObject);
-            if (globalCamera)
-                globalCamera.SetActive(true);
+            Destroy(this.gameObject);
+            if (GlobalCamera)
+                GlobalCamera.SetActive(true);
 
-            Respawn?.Invoke(3);
+            Respawn?.Invoke(30);
 
             return;
         }

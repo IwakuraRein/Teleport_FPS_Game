@@ -26,7 +26,6 @@ public class LocalManager : MonoBehaviour
             for (int i = 0; i < EnemyBody.transform.childCount; i++)
             {
                 var child = EnemyBody.transform.GetChild(i).gameObject;
-                Debug.Log(LayerMask.NameToLayer("PlayerBody"));
                 child.layer = LayerMask.NameToLayer("PlayerBody");
             }
             return;

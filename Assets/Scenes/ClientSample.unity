@@ -13551,7 +13551,7 @@ GameObject:
   - component: {fileID: 1374254224}
   - component: {fileID: 1374254223}
   - component: {fileID: 1374254221}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: DeathCamera
   m_TagString: GlobalCamera
   m_Icon: {fileID: 0}

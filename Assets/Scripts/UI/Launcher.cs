@@ -12,8 +12,10 @@ public class Launcher : MonoBehaviourPunCallbacks
     public string PlayerPrefabName;
     public Transform spawnPoint1;
     public Transform spawnPoint2;
+    public Camera MenuCamera;
     private bool connectedToMaster;
     private bool joinedRoom;
+
 
     public void ConnectToMaster()
     {
@@ -67,8 +69,8 @@ public class Launcher : MonoBehaviourPunCallbacks
     private IEnumerator WaitToInstantiatatePlayer(float _timeSpawn)
     {
         yield return new WaitForSeconds(_timeSpawn);
-        //PhotonNetwork.Instantiate(PlayerPrefabName, new Vector3(-14, 3, 8), Quaternion.identity);
-        if(Random.Range(0,2)==1)
+        MenuCamera.tag = "Untagged";
+        if (Random.Range(0,2)==1)
             PhotonNetwork.Instantiate(PlayerPrefabName, spawnPoint1.position, Quaternion.identity);
         else
             PhotonNetwork.Instantiate(PlayerPrefabName, spawnPoint2.position, Quaternion.identity);

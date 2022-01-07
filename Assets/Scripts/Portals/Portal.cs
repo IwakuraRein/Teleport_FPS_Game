@@ -55,7 +55,9 @@ public class Portal : MonoBehaviour
             Vector3 objPos = transform.InverseTransformPoint(portalObjects[i].transform.position);
             if (objPos.z > 0.0f)
             {
+                Debug.Log(portalObjects[i]);
                 portalObjects[i].Warp();
+                portalObjects.RemoveAt(i);
             }
         }
     }

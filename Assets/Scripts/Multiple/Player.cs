@@ -12,6 +12,7 @@ public class Player : MonoBehaviour, IDamager
 {
     public int Heath;
     public string PlayerPrefabName;
+    public GameObject Delete;
     private PhotonView photonView;
     private GameObject GlobalCamera;
 
@@ -41,11 +42,11 @@ public class Player : MonoBehaviour, IDamager
         {
             //gameObject.SetActive(false);
             PhotonNetwork.Destroy(this.gameObject);
-            Destroy(this.gameObject);
+            Destroy(Delete);
             if (GlobalCamera)
                 GlobalCamera.SetActive(true);
 
-            Respawn?.Invoke(30);
+            Respawn?.Invoke(3);
 
             return;
         }

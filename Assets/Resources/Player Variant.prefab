@@ -33444,6 +33444,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Heath: 100
   PlayerPrefabName: Player Variant
+  Delete: {fileID: 2900559326003897217}
 --- !u!1 &4274400873186005586
 GameObject:
   m_ObjectHideFlags: 0
@@ -40421,7 +40422,7 @@ GameObject:
   - component: {fileID: 3433487851918483684}
   m_Layer: 0
   m_Name: Portals
-  m_TagString: Untagged
+  m_TagString: Portal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72936,7 +72937,7 @@ GameObject:
   - component: {fileID: 7741035256947404563}
   m_Layer: 5
   m_Name: HUD
-  m_TagString: Untagged
+  m_TagString: Portal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

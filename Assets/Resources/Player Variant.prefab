@@ -33917,8 +33917,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76455ab48a69e1e4eb86ba5edffa127b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minRecoilRange: {x: -2, y: -5}
-  maxRecoilRange: {x: 2, y: 5}
+  minRecoilRange: {x: -1, y: -1}
+  maxRecoilRange: {x: 1, y: 1}
   frequence: 25
   damp: 15
 --- !u!1 &3907983308134441320
@@ -34926,8 +34926,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  recoilRange: {x: 0.1, y: 0.05}
-  recoilFadeOutTime: 0.3
+  recoilRange: {x: 0.03, y: 0.03}
+  recoilFadeOutTime: 0.1
 --- !u!114 &8391258571498048450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63030,7 +63030,7 @@ MonoBehaviour:
   eyeCamera: {fileID: 8500662401730185010}
   aimingFOV: 26
   impactAudioData: {fileID: 11400000, guid: 49c10b295df439544ac2f935dd26f7aa, type: 2}
-  spreadAngle: 60
+  spreadAngle: 15
   currentAmmo: 0
   currentMaxAmmoCarried: 0
   bulletImpactPrefab: {fileID: 1879272669879180, guid: e3f361eacdeb09440850ac7397930cba, type: 3}
@@ -74823,7 +74823,7 @@ MonoBehaviour:
   eyeCamera: {fileID: 8500662401730185010}
   aimingFOV: 26
   impactAudioData: {fileID: 11400000, guid: 49c10b295df439544ac2f935dd26f7aa, type: 2}
-  spreadAngle: 60
+  spreadAngle: 15
   currentAmmo: 0
   currentMaxAmmoCarried: 0
   bulletImpactPrefab: {fileID: 1879272669879180, guid: e3f361eacdeb09440850ac7397930cba, type: 3}

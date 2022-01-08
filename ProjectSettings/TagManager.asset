@@ -16,20 +16,23 @@ TagManager:
   - Water
   - Wood
   - FX
+  - Portal
+  - GlobalCamera
+  - UI
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Portal
   - Water
   - UI
   - Player
   - Gun
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Item
+  - PlayerBody
+  - PlayerBody2
+  - GlobalCamera
+  - tmp-UI
   - 
   - 
   - 
@@ -52,4 +55,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UIBackgound
+    uniqueID: 2772645585
+    locked: 0
+  - name: UIMenu
+    uniqueID: 2542897051
+    locked: 0
+  - name: UIForeGround
+    uniqueID: 4112269495
     locked: 0
